@@ -1,4 +1,4 @@
-﻿using TeamContactTelegramBot.Service.Interfaces;
+﻿using TeamContactTelegramBot.Service.Interfaces.Users;
 
 namespace TeamContactTelegramBot.Service.Users.Interfaces
 {

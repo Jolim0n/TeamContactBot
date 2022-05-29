@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace TeamContactTelegramBot.Data.Users
+namespace TeamContactTelegramBot.Data.Tasks
 {
-    public class UsersContext : DbContext
+    public class TaskContext : DbContext
     {
-        public virtual DbSet<Users> DbUsers { get; set; }
+        public virtual DbSet<Task> DbTask { get; set; }
 
-        public UsersContext()
+        public TaskContext()
         {
             Database.EnsureCreated();
         }

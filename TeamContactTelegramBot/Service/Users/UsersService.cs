@@ -1,5 +1,5 @@
-﻿using TeamContactTelegramBot.Service.Interfaces;
-using TeamContactTelegramBot.Service.Interfaces.System;
+﻿using TeamContactTelegramBot.Repositories;
+using TeamContactTelegramBot.Service.Interfaces.Users;
 
 namespace TeamContactTelegramBot.Service.Users
 {
@@ -19,11 +19,23 @@ namespace TeamContactTelegramBot.Service.Users
         {
             return await Common.UsersRepository.Users.GetListAsync();
         }
-
-        public async Task<bool> CheckIfRegAsync(string log, string pass)
+        public async Task<(bool, byte)> CheckIfRegAsync(string log, string pass)
         {
             return await Common.UsersRepository.Users.CheckIfRegAsync(log, pass);
 
+        }
+        public async Task<List<Data.Users.Users>> GetAllProgrammersAsync()
+        {
+            return await Common.UsersRepository.Users.GetAllProgrammersAsync();
+        }
+        public async Task<List<Data.Users.Users>> GetAllAnalystsAsync()
+        {
+            return await Common.UsersRepository.Users.GetAllAnalystsAsync();
+        }
+
+        public async Task<Data.Users.Users> AddAsync(Data.Users.Users user)
+        {
+            return await Common.UsersRepository.Users.AddAsync(user);
         }
     }
 }

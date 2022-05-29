@@ -1,8 +1,13 @@
 ﻿
+using Telegram.Bot;
+using Telegram.Bot.Types;
+
 namespace TeamContactTelegramBot.Controllers.Requests
 {
     public class ApiStringRequest
     {
-        public string StringRequest { get; set; }
+        public Message MessageRequest { get; set; }
+
+        public ITelegramBotClient botClient { get; set; }
     }
 }

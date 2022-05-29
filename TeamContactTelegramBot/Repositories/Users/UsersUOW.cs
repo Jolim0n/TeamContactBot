@@ -1,7 +1,7 @@
 ﻿using TeamContactTelegramBot.Data.Users;
-using TeamContactTelegramBot.Repositories.Users;
+using TeamContactTelegramBot.Repositories.Users.Interfaces;
 
-namespace TeamContactTelegramBot.Repositories
+namespace TeamContactTelegramBot.Repositories.Users
 {
     public class UsersUOW : IUsersUOW
     {

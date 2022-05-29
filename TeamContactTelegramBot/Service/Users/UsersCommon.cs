@@ -1,5 +1,5 @@
-﻿using TeamContactTelegramBot.Service.Interfaces;
-using TeamContactTelegramBot.Service.Interfaces.System;
+﻿using TeamContactTelegramBot.Repositories;
+using TeamContactTelegramBot.Service.Interfaces.Users;
 using TeamContactTelegramBot.Service.Users.Interfaces;
 
 namespace TeamContactTelegramBot.Service.Users

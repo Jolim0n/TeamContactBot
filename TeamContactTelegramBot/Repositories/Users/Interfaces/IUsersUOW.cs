@@ -1,7 +1,4 @@
-﻿
-using TeamContactTelegramBot.Repositories.Users;
-
-namespace TeamContactTelegramBot.Repositories
+﻿namespace TeamContactTelegramBot.Repositories.Users.Interfaces
 {
     public interface IUsersUOW : IDisposable
     {
