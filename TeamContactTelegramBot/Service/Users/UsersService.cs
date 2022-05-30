@@ -19,7 +19,7 @@ namespace TeamContactTelegramBot.Service.Users
         {
             return await Common.UsersRepository.Users.GetListAsync();
         }
-        public async Task<(bool, byte)> CheckIfRegAsync(string log, string pass)
+        public async Task<(bool, byte, int)> CheckIfRegAsync(string log, string pass)
         {
             return await Common.UsersRepository.Users.CheckIfRegAsync(log, pass);
 

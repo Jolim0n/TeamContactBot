@@ -87,16 +87,16 @@ namespace TeamContactTelegramBot.Repositories.Users
             return usersInformation.ToList();
         }
 
-        public async Task<(bool, byte)> CheckIfRegAsync(string log, string pass)
+        public async Task<(bool, byte, int)> CheckIfRegAsync(string log, string pass)
         {
             using UsersContext context = new UsersContext();
 
             var user = await context.DbUsers.FirstOrDefaultAsync(x => x.Login == log && x.Password == pass);
 
             if (user == null)
-                return (false, 0);
+                return (false, 0, 0);
             else 
-                return (true, user.Role);
+                return (true, user.Role, user.UsersId);
         }
     }
 }

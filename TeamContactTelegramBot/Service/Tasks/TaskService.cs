@@ -34,6 +34,24 @@ namespace TeamContactTelegramBot.Service.Tasks
             return allDoneTasks;
         }
 
+        public async Task<List<TaskDTO>> GetActiveTasksForProgrammerAsync(int userId)
+        {
+            var allDoneTasks = await Common.TaskRepository.Task.GetActiveTasksForProgrammerAsync(userId);
+            await CompleteModel(allDoneTasks);
+            return allDoneTasks;
+        }
+
+        public async Task<List<TaskDTO>> GetActiveTasksForAnalystAsync(int userId)
+        {
+            var allDoneTasks = await Common.TaskRepository.Task.GetActiveTasksForAnalystAsync(userId);
+            await CompleteModel(allDoneTasks);
+            return allDoneTasks;
+        }
+        public async Task<TaskDTO> UpdateStatusAsync(string code, byte state)
+        {
+            return await Common.TaskRepository.Task.UpdateStatusAsync(code, state);
+        }
+
         public async Task<bool> CloseTaskAsync(string code)
         {
             return await Common.TaskRepository.Task.CloseTaskAsync(code);

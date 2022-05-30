@@ -11,7 +11,7 @@ namespace TeamContactTelegramBot.Service.Interfaces.Users
     {
         Task<List<Data.Users.Users>> GetListAsync();
 
-        Task<(bool, byte)> CheckIfRegAsync(string log, string pass);
+        Task<(bool, byte, int)> CheckIfRegAsync(string log, string pass);
 
         Task<List<Data.Users.Users>> GetAllProgrammersAsync();
 

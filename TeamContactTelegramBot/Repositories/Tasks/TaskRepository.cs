@@ -44,6 +44,35 @@ namespace TeamContactTelegramBot.Repositories.Tasks
                 ?.Select(x => _mapper.Map<TaskDTO>(x)).ToList();
         }
 
+        public async Task<List<TaskDTO>> GetActiveTasksForProgrammerAsync(int userId)
+        {
+            using TaskContext context = new TaskContext();
+            return (await context.DbTask.Where(x=> x.State == 1 && x.ProgRcd == userId).ToListAsync()) // select * from Tasks where Task_State == 1 and Task_ProgRcd == :userID
+                ?.Select(x => _mapper.Map<TaskDTO>(x)).ToList();
+        }
+
+        public async Task<List<TaskDTO>> GetActiveTasksForAnalystAsync(int userId)
+        {
+            using TaskContext context = new TaskContext();
+            return (await context.DbTask.Where(x => x.State == 2 && x.AnalystRcd == userId).ToListAsync()) // select * from Tasks where Task_State == 2 and Task_AnalystRcd == :userID
+                ?.Select(x => _mapper.Map<TaskDTO>(x)).ToList();
+        }
+
+        public async Task<TaskDTO> UpdateStatusAsync(string code, byte state)
+        {
+            using TaskContext context = new TaskContext();
+            var taskForUpdate = await context.DbTask.FirstOrDefaultAsync(x => x.Code == code);
+
+            if (taskForUpdate == null)
+                return new TaskDTO();
+
+            taskForUpdate.State = state;
+            context.Update(taskForUpdate);
+            await context.SaveChangesAsync();
+
+            return _mapper.Map<TaskDTO>(taskForUpdate);
+        }
+
         public async Task<bool> CloseTaskAsync(string code)
         {
             using TaskContext context = new TaskContext();

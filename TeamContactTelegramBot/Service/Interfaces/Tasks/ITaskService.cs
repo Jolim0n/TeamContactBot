@@ -10,6 +10,11 @@ namespace TeamContactTelegramBot.Service.Interfaces.Tasks
         Task<List<TaskDTO>> GetAllTasksAsync();
         Task<List<TaskDTO>> GetAllTasksAnyStateAsync();
 
+        Task<List<TaskDTO>> GetActiveTasksForProgrammerAsync(int userId);
+
+        Task<List<TaskDTO>> GetActiveTasksForAnalystAsync(int userId);
+        Task<TaskDTO> UpdateStatusAsync(string code ,byte state);
+
         Task<bool> CloseTaskAsync(string code);
 
         Task GoogleAsync();
